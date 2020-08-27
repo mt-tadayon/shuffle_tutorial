@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Shuffle Tutorial',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -68,9 +68,8 @@ class _DashboardState extends State<Dashboard> {
                   child: Text('Add Card'),
                   onPressed: () {
                     //TODO: Add a new card to cards with title 'Unit Testing' and subtitle of 'Intermediate'.
-                    cards.add(
-                      CardDetail(title: 'Unit Testing', subtitle: 'Intermediate'),
-                    );
+                    cards.add(CardDetail(
+                        title: 'Unit Testing', subtitle: 'Intermediate'));
                     setState(() {});
                   },
                 ),
