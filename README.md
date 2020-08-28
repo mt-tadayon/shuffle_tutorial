@@ -3,7 +3,7 @@
 # List Method: .shuffle() & .add()
 
 This is an application with a list of cards. You can add  a new card or shuffle all cards and show them in the UI.
-- [You can find the link to the YouTube video here.]()
+- [You can find the link to the YouTube video here.](https://youtu.be/1XaPCDX0ZVU)
 - [The link to DartPad with three example of using shuffle, toSet, add and indexOf methods](https://dartpad.dev/3587efe1610f6fd7563fddd206df9869)
 - [Inspiration for UI is from a medium article from Shuaib Afegbua](https://proandroiddev.com/flutter-thursday-02-beautiful-list-ui-and-detail-page-a9245f5ceaf0)
 
