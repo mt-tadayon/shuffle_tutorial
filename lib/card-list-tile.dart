@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CardListTile extends StatelessWidget {
   final String title;
   final String subtitle;
+  final String urlPath;
 
-  CardListTile({this.title, this.subtitle});
+  CardListTile({this.title, this.subtitle, this.urlPath});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,13 @@ class CardListTile extends StatelessWidget {
               ),
             ),
           ),
-          child: Icon(Icons.play_circle_outline, color: Colors.white),
+          child: IconButton(
+            icon: Icon(
+              Icons.play_circle_outline,
+              color: Colors.white,
+            ),
+            onPressed: () => _launchURL(urlPath),
+          ),
         ),
         title: Text(
           title,
@@ -63,5 +71,13 @@ class CardListTile extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+void _launchURL(String urlPath) async {
+  if (await canLaunch(urlPath)) {
+    await launch(urlPath);
+  } else {
+    throw 'Could not launch $urlPath';
   }
 }

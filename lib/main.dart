@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shuffle Tutorial',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -25,8 +24,9 @@ class MyApp extends StatelessWidget {
 class CardDetail {
   String title;
   String subtitle;
+  String urlPath;
 
-  CardDetail({this.title, this.subtitle});
+  CardDetail({this.title, this.subtitle, this.urlPath});
 }
 
 class Dashboard extends StatefulWidget {
@@ -35,11 +35,31 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final List<CardDetail> cards = [
-    CardDetail(title: 'Map Tutorial', subtitle: 'Basic'),
-    CardDetail(title: 'Provider', subtitle: 'Intermediate'),
-    CardDetail(title: 'Fold Tutorial', subtitle: 'Basic'),
-    CardDetail(title: 'Cubit', subtitle: 'Intermediate'),
+  List<CardDetail> cards = [
+    CardDetail(
+        title: 'Map Tutorial',
+        subtitle: 'Basic',
+        urlPath: 'https://www.youtube.com/watch?v=6xWVWDvmqeU'),
+    CardDetail(
+        title: 'Provider',
+        subtitle: 'Intermediate',
+        urlPath: 'https://youtu.be/hwv31bNdSt4'),
+    CardDetail(
+        title: 'Fold Tutorial',
+        subtitle: 'Basic',
+        urlPath: 'https://youtu.be/rzdmjnA_5xQ'),
+  ];
+
+  final List<CardDetail> newCards = [
+    CardDetail(
+      title: 'Spread Operator',
+      subtitle: 'Beginners',
+      urlPath: '',
+    ),
+    CardDetail(
+        title: 'Unit Test',
+        subtitle: 'Beginners',
+        urlPath: 'https://youtu.be/C1kzJH8SiuE'),
   ];
 
   @override
@@ -50,38 +70,24 @@ class _DashboardState extends State<Dashboard> {
       body: Column(
         children: [
           Expanded(
-            flex: 3,
             child: ListView.builder(
               itemCount: cards.length,
               itemBuilder: (context, index) => CardListTile(
                 title: cards[index].title,
                 subtitle: cards[index].subtitle,
+                urlPath: cards[index].urlPath,
               ),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                RaisedButton(
-                  child: Text('Add Card'),
-                  onPressed: () {
-                    //TODO: Add a new card to cards with title 'Unit Testing' and subtitle of 'Intermediate'.
-                    cards.add(CardDetail(
-                        title: 'Unit Testing', subtitle: 'Intermediate'));
-                    setState(() {});
-                  },
-                ),
-                RaisedButton(
-                  child: Text('Shuffle Cards'),
-                  onPressed: () {
-                    //TODO: Shuffle all cards and change the order of them in the UI
-                    cards.shuffle();
-                    setState(() {});
-                  },
-                )
-              ],
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: RaisedButton(
+              child: Text('Add Cards'),
+              onPressed: () {
+                //TODO: Add newCards to cards.
+                cards = [...cards, ...newCards];
+                setState(() {});
+              },
             ),
           )
         ],
